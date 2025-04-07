@@ -1,8 +1,13 @@
-# Skincare Routine Assistant
+# Clarity AI Assistant
 
-### This is a simple GenAI application that recommends a skincare routine based on a user's skin type and skin issues.
+### This is a simple GenAI application that recommends a skincare routine based on a user's skin type and skin concerns.
+
+#### Credit
+This application is based on https://github.com/mackenziemitchell6/SkincareRoutineAssistant.
 
 #### Setup
+* Note from Brittney: These are the instructions provided by the original creator. This will be changed once I make my own changes to the code.
+
 To try out the app on your local machine...
 1. First clone the repo into your desired location:
 ```git clone https://github.com/mackenziemitchell6/SkincareRoutineAssistant.git```
