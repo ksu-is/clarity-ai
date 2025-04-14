@@ -9,9 +9,55 @@ from prompts import PERSONA, INITIAL_PROMPT
 
 st.header("Clarity AI")
 
+# Sidebar for managing chats
+st.sidebar.header("Chats")
+
+# Initialize chats in session state
+if "chats" not in st.session_state:
+    st.session_state.chats = {"Default Chat": {"messages": [], "title": "Default Chat"}}
+if "current_chat" not in st.session_state:
+    st.session_state.current_chat = "Default Chat"
+
+# Function to switch chats
+def switch_chat(chat_name):
+    st.session_state.current_chat = chat_name
+
+# Function to create a new chat
+def create_new_chat():
+    new_chat_name = f"Chat {len(st.session_state.chats) + 1}"
+    st.session_state.chats[new_chat_name] = {"messages": [], "title": "New Chat"}
+    switch_chat(new_chat_name)
+
+# Function to delete a chat
+def delete_chat(chat_name):
+    if chat_name in st.session_state.chats:
+        del st.session_state.chats[chat_name]
+        # Switch to the default chat if the current chat is deleted
+        if st.session_state.current_chat == chat_name:
+            st.session_state.current_chat = "Default Chat"
+
+# Sidebar button to create a new chat
+if st.sidebar.button("New Chat"):
+    create_new_chat()
+
+# Display chat tabs in the sidebar
+for chat_name in list(st.session_state.chats.keys()):
+    col1, col2 = st.sidebar.columns([4, 1])  # Create two columns for the tab and delete button
+    with col1:
+        if st.sidebar.button(chat_name, key=f"switch_{chat_name}"):
+            switch_chat(chat_name)
+    with col2:
+        if st.sidebar.button("❌", key=f"delete_{chat_name}", help="Delete this chat"):
+            delete_chat(chat_name)
+
+# Display the current chat title in the sidebar
+st.sidebar.subheader("Current Chat")
+st.sidebar.markdown(f"**{st.session_state.chats[st.session_state.current_chat]['title']}**")
+
+# Sync messages with the current chat
 if "messages" not in st.session_state:
-    st.subheader("I'm Clarity, your virtual dermatologist. How can I help you today?")
-    st.session_state.messages = []
+    st.session_state.messages = st.session_state.chats[st.session_state.current_chat]["messages"]
+st.session_state.messages = st.session_state.chats[st.session_state.current_chat]["messages"]
 
 if "memory" not in st.session_state:
     st.session_state.memory = ConversationBufferMemory(memory_key="chat_history")
@@ -26,6 +72,10 @@ if user_skin := st.chat_input("Ask me anything!"):
     with st.chat_message("user"):
         st.markdown(user_skin)
     st.session_state.messages.append({"role": "user", "content": user_skin})
+
+    # Auto-generate a title for the chat if it's the first user input
+    if len(st.session_state.messages) == 1:
+        st.session_state.chats[st.session_state.current_chat]["title"] = user_skin[:30] + "..." if len(user_skin) > 30 else user_skin
 
     # Handle greetings or insufficient input
     if user_skin.lower() in ["hi", "hello", "hey"]:
@@ -88,3 +138,6 @@ if user_skin := st.chat_input("Ask me anything!"):
 
     # Update memory context
     st.session_state.memory.save_context({"input": user_skin}, {"output": response})
+
+# Save messages back to the current chat
+st.session_state.chats[st.session_state.current_chat]["messages"] = st.session_state.messages
