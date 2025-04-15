@@ -7,6 +7,35 @@ from langchain.memory import ConversationBufferMemory
 
 from prompts import PERSONA, INITIAL_PROMPT
 
+# Add custom CSS for styling
+st.markdown(
+    """
+    <style>
+    /* Style the sidebar */
+    [data-testid="stSidebar"] {
+        background-color: #ffe6f0; /* Light pink background */
+    }
+
+    /* Style the main background */
+    [data-testid="stAppViewContainer"] {
+        background-color: #f5fff5; /* Very light green background */
+    }
+
+    /* Style the input bar */
+    div[data-baseweb="input"] > div {
+        background-color: #ffe6f0; /* Light pink background */
+        border-radius: 5px;
+    }
+
+    /* Style the input bar text */
+    div[data-baseweb="input"] input {
+        color: #333333; /* Dark text for contrast */
+    }
+    </style>
+    """,
+    unsafe_allow_html=True
+)
+
 st.header("Clarity AI")
 st.subheader("I'm Clarity, your virtual dermatologist. How can I help you?")
 
