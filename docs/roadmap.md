@@ -20,17 +20,25 @@
 
 ## Sprint Week 2
 ### Brittney's Tasks
-- [ ] Define input types: text/image uploads, skin concerns checklist, preferences
-- [ ] Start wireframing the user interaction flow
-- [ ] Begin modifying prompts or logic to align with the assistant’s tone, branding, and product recommendation style
-- [ ] Customize prompt templates to handle user inputs and return better-targeted suggestions
+- [x] Learn the basics of streamlit
+- [x] Purchase Open AI key
+- [x] Start wireframing the user interaction flow
+- [x] Begin modifying prompts or logic to align with the assistant’s tone, branding, and product recommendation style
+- [x] Customize prompt templates to handle user inputs and return better-targeted suggestions
+- [x] Add a sidebar that displays different chat tabs
+- [x] Add a button to delete a chat
+- [ ] Add attatchment option for user inputs
 - [ ] Add optional filters like budget, product type, etc.
+- [ ] Add a new page where the AI makes a list of products you want to save for later and buy
+- [ ] Add a link feature to saved product list for the user to easily find the product online
 
 ### Week 2 Findings
-- 
+- AI predicted the user input when it didn't mention details about their skin
+    - Solution: Edited the order of details in AI persona prompt, as well as added the prompt to systemmessageprompttemplate in app.py
+- Cannot edit the title of the chat tabs in the sidebar. 
 
 ### Week 1 Bugs
-- 
+- Bugs: None
 
 ## Sprint Week 3
 ### Brittney's Tasks
