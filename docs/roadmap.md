@@ -29,20 +29,25 @@
 - [x] Add a button to delete a chat
 - [x] Add attatchment option for user inputs
 - [ ] Add optional filters like budget, product type, etc.
-- [ ] Add a new page where the AI makes a list of products you want to save for later and buy
-- [ ] Add a link feature to saved product list for the user to easily find the product online
+- [x] Learn CSS in order to...
+    - [x] Change colors of the interface
+- [x] Add a feature where the AI makes a list of products you want to save for later in the sidebar
 
 ### Week 2 Findings
 - AI predicted the user input when it didn't mention details about their skin
     - Solution: Edited the order of details in AI persona prompt, as well as added the prompt to systemmessageprompttemplate in app.py
 - Cannot edit the title of the chat tabs in the sidebar. 
+- Budget and product type filter features from streamlit do not work.
 
 ### Week 1 Bugs
 - Bugs: None
 
 ## Sprint Week 3
 ### Brittney's Tasks
-- 
+- [ ] Figure out how to make filters work
+- [ ] Try adding a new page for saved products rather than having them in the sidebar
+- [ ] Find out how to not have the AI always feel like it has to generate a routine
+
 
 ### Week 3 Findings
 - 
