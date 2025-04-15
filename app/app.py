@@ -50,11 +50,13 @@ st.subheader("I'm Clarity, your virtual dermatologist. How can I help you?")
 # Sidebar for managing chats
 st.sidebar.header("Chats")
 
-# Initialize chats in session state
+# Initialize chats and saved products in session state
 if "chats" not in st.session_state:
     st.session_state.chats = {"Default Chat": {"messages": [], "title": "Default Chat"}}
 if "current_chat" not in st.session_state:
     st.session_state.current_chat = "Default Chat"
+if "saved_products" not in st.session_state:
+    st.session_state.saved_products = []
 
 # Function to switch chats
 def switch_chat(chat_name):
@@ -91,6 +93,14 @@ for chat_name in list(st.session_state.chats.keys()):
 # Display the current chat title in the sidebar
 st.sidebar.subheader("Current Chat")
 st.sidebar.markdown(f"**{st.session_state.chats[st.session_state.current_chat]['title']}**")
+
+# Display saved products in the sidebar
+st.sidebar.subheader("Saved Products")
+if st.session_state.saved_products:
+    for product in st.session_state.saved_products:
+        st.sidebar.markdown(f"- {product}")
+else:
+    st.sidebar.markdown("No products saved yet.")
 
 # Sync messages with the current chat
 if "messages" not in st.session_state:
@@ -164,7 +174,7 @@ if user_skin := st.chat_input("Ask me anything!"):
                     Use bullet points, numbered lists, or sections where appropriate. 
                     Only give a skincare routine or advice when the user provides details about their skin.
                     Always recommend that the user applies SPF during the daytime.
-                    Always refer to yourself as Clarity
+                    Always refer to yourself as Clarity.
                     Only use the information given to you about the user's skin from the user, never make assumptions about the user's skin.
                     Do not predict or simulate what the user might say next.
                     """
@@ -195,6 +205,16 @@ if user_skin := st.chat_input("Ask me anything!"):
         st.markdown(formatted_response)
 
     st.session_state.messages.append({"role": "assistant", "content": response})
+
+    # Save products to the saved products list
+    if "save these products" in user_skin.lower():
+        # Example: Extract product list from the response (placeholder logic)
+        products = [
+            "CeraVe Hydrating Cleanser",
+            "Neutrogena Hydro Boost Gel-Cream",
+            "EltaMD UV Clear SPF 46",
+        ]
+        st.session_state.saved_products.extend(products)
 
     # Update memory context
     st.session_state.memory.save_context({"input": user_skin}, {"output": response})
