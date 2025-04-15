@@ -27,7 +27,7 @@
 - [x] Customize prompt templates to handle user inputs and return better-targeted suggestions
 - [x] Add a sidebar that displays different chat tabs
 - [x] Add a button to delete a chat
-- [ ] Add attatchment option for user inputs
+- [x] Add attatchment option for user inputs
 - [ ] Add optional filters like budget, product type, etc.
 - [ ] Add a new page where the AI makes a list of products you want to save for later and buy
 - [ ] Add a link feature to saved product list for the user to easily find the product online

@@ -8,6 +8,7 @@ from langchain.memory import ConversationBufferMemory
 from prompts import PERSONA, INITIAL_PROMPT
 
 st.header("Clarity AI")
+st.subheader("I'm Clarity, your virtual dermatologist. How can I help you?")
 
 # Sidebar for managing chats
 st.sidebar.header("Chats")
@@ -66,6 +67,28 @@ if "memory" not in st.session_state:
 for message in st.session_state.messages:
     with st.chat_message(message["role"]):
         st.markdown(message["content"])
+
+# File uploader for attachments
+uploaded_file = st.file_uploader("Upload a file, photo, or video for analysis", type=["jpg", "jpeg", "png", "mp4", "pdf"])
+if uploaded_file:
+    # Display the uploaded file
+    st.markdown("### Uploaded File:")
+    st.markdown(f"**{uploaded_file.name}**")
+    
+    # Example: Analyze the uploaded file (placeholder logic)
+    if uploaded_file.type.startswith("image/"):
+        response = "I see you've uploaded an image. Let me analyze it for skincare advice."
+    elif uploaded_file.type.startswith("video/"):
+        response = "I see you've uploaded a video. I'll analyze it for relevant skincare insights."
+    elif uploaded_file.type == "application/pdf":
+        response = "You've uploaded a PDF. I'll extract and analyze the content for skincare advice."
+    else:
+        response = "Unsupported file type. Please upload an image, video, or PDF."
+
+    # Display the AI's response
+    with st.chat_message("assistant"):
+        st.markdown(response)
+    st.session_state.messages.append({"role": "assistant", "content": response})
 
 # Get user input
 if user_skin := st.chat_input("Ask me anything!"):
