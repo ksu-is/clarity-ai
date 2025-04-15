@@ -31,6 +31,14 @@ st.markdown(
     div[data-baseweb="input"] input {
         color: #333333; /* Dark text for contrast */
     }
+
+    /* Style the top and bottom bars */
+    header[data-testid="stHeader"] {
+        background-color: #f5fff5; /* Very light green background */
+    }
+    footer {
+        background-color: #f5fff5; /* Very light green background */
+    }
     </style>
     """,
     unsafe_allow_html=True
@@ -98,7 +106,7 @@ for message in st.session_state.messages:
         st.markdown(message["content"])
 
 # File uploader for attachments
-uploaded_file = st.file_uploader("Upload a file, photo, or video for analysis", type=["jpg", "jpeg", "png", "mp4", "pdf"])
+uploaded_file = st.file_uploader("Upload a file, photo, or video for a skin analysis", type=["jpg", "jpeg", "png", "mp4", "pdf"])
 if uploaded_file:
     # Display the uploaded file
     st.markdown("### Uploaded File:")
