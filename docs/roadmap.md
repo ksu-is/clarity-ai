@@ -46,7 +46,8 @@
 ### Brittney's Tasks
 - [ ] Figure out how to make filters work
 - [ ] Try adding a new page for saved products rather than having them in the sidebar
-- [ ] Find out how to not have the AI always feel like it has to generate a routine
+- [x] Find out how to not have the AI always feel like it has to generate a routine
+- [x] Tweak AI persona for optimized output
 - [x] Look at previous students' presentation slides as an example for your slide
 - [x] Create Powerpoint slide
     - [x] Team members
@@ -55,7 +56,8 @@
     - [x] 1-2 screenshots of running app
 
 ### Week 3 Findings
-- 
+- Was unable to make the filter feature function properly, as well as adding a new page for saved products.
+- Streamlit is very limited when it comes to UI features, however maybe I just haven't learned enough. Will look into it
 
 ### Week 3 Bugs
-- 
+- None
