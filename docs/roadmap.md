@@ -47,7 +47,12 @@
 - [ ] Figure out how to make filters work
 - [ ] Try adding a new page for saved products rather than having them in the sidebar
 - [ ] Find out how to not have the AI always feel like it has to generate a routine
-
+- [x] Look at previous students' presentation slides as an example for your slide
+- [x] Create Powerpoint slide
+    - [x] Team members
+    - [x] Project title
+    - [x] Project description/tagline
+    - [x] 1-2 screenshots of running app
 
 ### Week 3 Findings
 - 
