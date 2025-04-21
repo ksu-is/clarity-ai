@@ -1,4 +1,5 @@
 # Clarity AI Assistant
+![](docs/clarity-ai-thumbnail.png)
 
 ### This is a simple GenAI application that recommends a skincare routine based on a user's skin type and skin concerns.
 
